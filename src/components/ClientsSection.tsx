@@ -34,14 +34,14 @@ const ClientsSection = () => {
           {clientLogos.map((logo) => (
             <div
               key={logo.src}
-              className="h-16 sm:h-18 lg:h-20 rounded-xl bg-card border border-border/50 flex items-center justify-center px-4"
+              className="h-16 sm:h-18 lg:h-20 rounded-xl bg-card border border-border/50 flex items-center justify-center px-4 overflow-hidden"
               style={{ boxShadow: "var(--shadow-soft)" }}
             >
               <img
                 src={logo.src}
                 alt={logo.alt}
                 loading="lazy"
-                className="max-h-10 sm:max-h-11 lg:max-h-12 w-auto object-contain opacity-80 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                className="max-h-10 sm:max-h-11 lg:max-h-12 w-auto object-contain transition-transform duration-300 ease-out hover:scale-110"
               />
             </div>
           ))}

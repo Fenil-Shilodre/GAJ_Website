@@ -1,31 +1,40 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+
+const heroBgs = ["/hero/hero-bg.jpg", "/hero/hero-bg2.png", "/hero/hero-bg3.png"];
 
 const HeroSection = () => {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % heroBgs.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Hero Background */}
+      {/* Crossfade background */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="/hero/hero-bg.jpg"
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        {/* Overlay */}
+        <AnimatePresence>
+          <motion.img
+            key={heroBgs[current]}
+            src={heroBgs[current]}
+            alt=""
+            aria-hidden="true"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </AnimatePresence>
         <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/25 to-black/45" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 section-container text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: "easeOut", delay: 0.3 }}
-        >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-xs font-semibold tracking-widest uppercase mb-6">
-            Precision Engineering
-          </span>
-        </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
@@ -70,7 +79,7 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
@@ -83,7 +92,7 @@ const HeroSection = () => {
             className="w-1.5 h-1.5 rounded-full bg-accent"
           />
         </div>
-      </motion.div>
+      </motion.div> */}
     </section>
   );
 };

@@ -8,6 +8,7 @@ import AboutSection from "@/components/AboutSection";
 import ProductsSection from "@/components/ProductsSection";
 import ClientsSection from "@/components/ClientsSection";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import bgImg from "@/assets/bg.png";
 
 const facilities = Array.from({ length: 9 }).map((_, idx) => {
   const n = String(idx + 1).padStart(2, "0");
@@ -73,12 +74,12 @@ export default function AboutUs() {
       <section className="relative min-h-[72vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/facilities/facility-01.png"
+            src={bgImg}
             alt=""
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy/25 via-teal/10 to-black/25" />
+          <div className="absolute inset-0 bg-black/60" />
         </div>
 
         <div className="relative z-10 section-container text-center py-24">

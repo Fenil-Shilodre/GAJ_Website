@@ -4,9 +4,9 @@ import { useEffect, useState, useRef } from "react";
 import factoryImg from "@/assets/factory-about.jpg";
 
 const stats = [
+  { value: 40, suffix: "+", label: "Years Experience" },
   { value: 500, suffix: "+", label: "Projects Completed" },
   { value: 120, suffix: "+", label: "Happy Clients" },
-  { value: 25, suffix: "+", label: "Years Experience" },
   { value: 50, suffix: "+", label: "Expert Engineers" },
 ];
 
@@ -46,7 +46,7 @@ const AboutSection = () => {
   const { ref, isInView } = useScrollReveal();
 
   return (
-    <section id="about" className="py-24 lg:py-32">
+    <section id="about" aria-label="About GAJ Manufacturing Works" className="py-24 lg:py-32">
       <div className="section-container" ref={ref}>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Image */}
@@ -59,7 +59,7 @@ const AboutSection = () => {
             <div className="rounded-2xl overflow-hidden">
               <img
                 src={factoryImg}
-                alt="GAJ Manufacturing facility"
+                alt="GAJ Manufacturing Works shop floor – Ankleshwar GIDC"
                 loading="lazy"
                 width={960}
                 height={640}
@@ -81,10 +81,13 @@ const AboutSection = () => {
               GAJ Manufacturing Works
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              With over 25 years of excellence in industrial manufacturing, GAJ Manufacturing Works has established itself as a trusted partner for precision engineering solutions across diverse industries.
+              Since 1980, GAJ Manufacturing Works has been at the forefront of Chemical, Dyes, and Pharmaceutical process equipment manufacturing. We design and manufacture a comprehensive range of industrial equipment compliant with ASME Section VIII Division 1  combining decades of heritage with modern innovation.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              We specialise in Reactor Vessels, Storage Tanks, Heat Exchangers, Filter Presses, Pressure Vessels, Blenders, and Columns  fabricated in Stainless Steel and Mild Steel to customer specifications.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-10">
-              Our state-of-the-art facility combines cutting-edge CNC technology with skilled craftsmanship to deliver components that meet the highest international quality standards.
+              GAJ Manufacturing Works is certified to <strong className="text-foreground">ISO 9001:2015</strong> and registered under <strong className="text-foreground">MSME</strong>, reflecting our commitment to quality management, continual improvement, and customer satisfaction.
             </p>
 
             <div className="grid grid-cols-2 gap-6">
