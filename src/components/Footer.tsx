@@ -17,10 +17,10 @@ const Footer = () => {
           <div>
             <h4 className="font-heading font-bold text-foreground mb-4">Quick Links</h4>
             <div className="flex flex-col gap-2.5">
-              {["Home", "Services", "About", "Products", "Contact"].map((l) => (
+              {["Home", "Services", "About", "Projects", "Contact"].map((l) => (
                 <a
                   key={l}
-                  href={`#${l.toLowerCase()}`}
+                  href={`#${l === "Projects" ? "projects" : l.toLowerCase()}`}
                   className="text-muted-foreground text-sm hover:text-accent transition-colors duration-200"
                 >
                   {l}

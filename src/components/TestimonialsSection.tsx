@@ -1,7 +1,6 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { Quote } from "lucide-react";
 
 const testimonials = [
   {
@@ -22,11 +21,7 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => {
-  const [current, setCurrent] = useState(0);
   const { ref, isInView } = useScrollReveal();
-
-  const next = () => setCurrent((c) => (c + 1) % testimonials.length);
-  const prev = () => setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length);
 
   return (
     <section id="testimonials" className="py-24 lg:py-32">
@@ -43,53 +38,41 @@ const TestimonialsSection = () => {
           </h2>
         </motion.div>
 
-        <div className="max-w-3xl mx-auto">
-          <AnimatePresence mode="wait">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {testimonials.map((t, i) => (
             <motion.div
-              key={current}
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -30 }}
-              transition={{ duration: 0.4 }}
-              className="card-industrial p-10 lg:p-14 text-center relative"
+              key={t.author}
+              initial={{ opacity: 0, y: 22 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, delay: i * 0.08 }}
+              className="card-industrial p-8 lg:p-9 relative overflow-hidden"
             >
-              <Quote className="w-10 h-10 text-accent/20 mx-auto mb-6" />
-              <p className="text-foreground text-lg lg:text-xl leading-relaxed mb-8 italic">
-                "{testimonials[current].text}"
+              <div className="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-accent/10 blur-2xl" />
+
+              <Quote className="w-10 h-10 text-accent/25 mb-6" />
+
+              <p className="text-foreground text-base leading-relaxed mb-8">
+                <span className="text-foreground/90">“</span>
+                {t.text}
+                <span className="text-foreground/90">”</span>
               </p>
-              <div>
-                <p className="font-heading font-bold text-foreground">{testimonials[current].author}</p>
-                <p className="text-muted-foreground text-sm mt-1">{testimonials[current].role}</p>
+
+              <div className="pt-6 border-t border-border/60 flex items-center gap-4">
+                <div className="w-11 h-11 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center font-heading font-bold text-accent">
+                  {t.author
+                    .split(" ")
+                    .slice(0, 2)
+                    .map((w) => w[0])
+                    .join("")
+                    .toUpperCase()}
+                </div>
+                <div className="min-w-0">
+                  <p className="font-heading font-bold text-foreground leading-none truncate">{t.author}</p>
+                  <p className="text-muted-foreground text-sm mt-1 truncate">{t.role}</p>
+                </div>
               </div>
             </motion.div>
-          </AnimatePresence>
-
-          <div className="flex justify-center items-center gap-4 mt-8">
-            <button
-              onClick={prev}
-              className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:border-accent hover:text-accent transition-colors"
-              aria-label="Previous testimonial"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <div className="flex gap-2">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrent(i)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${i === current ? "bg-accent w-6" : "bg-border"}`}
-                  aria-label={`Go to testimonial ${i + 1}`}
-                />
-              ))}
-            </div>
-            <button
-              onClick={next}
-              className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:border-accent hover:text-accent transition-colors"
-              aria-label="Next testimonial"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
+          ))}
         </div>
       </div>
     </section>

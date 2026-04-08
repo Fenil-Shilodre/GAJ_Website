@@ -1,25 +1,18 @@
 import { motion } from "framer-motion";
-import heroVideo from "@/assets/hero-video.mp4.asset.json";
 
 const HeroSection = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Video Background */}
+      {/* Hero Background */}
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover"
-        >
-          <source
-            src={heroVideo.url}
-            type="video/mp4"
-          />
-        </video>
+        <img
+          src="/hero/hero-bg.jpg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/25 to-black/45" />
       </div>
 
       {/* Content */}
@@ -40,16 +33,20 @@ const HeroSection = () => {
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.5 }}
           className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6"
         >
-          <span className="gradient-text">Engineering Precision.</span>
+          <span className="text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.45)]">
+            Engineering Precision.
+          </span>
           <br />
-          <span className="text-foreground">Powering Industries.</span>
+          <span className="text-white/90 drop-shadow-[0_10px_30px_rgba(0,0,0,0.45)]">
+            Powering Industries.
+          </span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.7 }}
-          className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto mb-10"
+          className="text-white/80 text-base sm:text-lg max-w-2xl mx-auto mb-10 drop-shadow-[0_10px_22px_rgba(0,0,0,0.35)]"
         >
           High-performance manufacturing solutions built with accuracy and reliability.
         </motion.p>
@@ -63,7 +60,10 @@ const HeroSection = () => {
           <a href="#services" className="btn-primary">
             Explore Services
           </a>
-          <a href="#contact" className="btn-outline">
+          <a
+            href="#contact"
+            className="btn-outline border-white/60 text-white hover:border-white hover:text-white hover:bg-white/10"
+          >
             Contact Us
           </a>
         </motion.div>
@@ -76,7 +76,7 @@ const HeroSection = () => {
         transition={{ delay: 1.5 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
       >
-        <div className="w-6 h-10 rounded-full border-2 border-foreground/20 flex items-start justify-center p-1.5">
+        <div className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-1.5">
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}

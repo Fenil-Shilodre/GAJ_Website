@@ -1,17 +1,19 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { motion } from "framer-motion";
 
-const clients = [
-  "Tata Steel", "Reliance Industries", "BHEL", "Larsen & Toubro",
-  "Siemens India", "Adani Group", "Thermax", "Godrej & Boyce",
-  "Kirloskar", "Ashok Leyland", "Mahindra", "JSW Steel",
-];
+const clientLogos = Array.from({ length: 18 }).map((_, idx) => {
+  const n = String(idx + 1).padStart(2, "0");
+  return {
+    src: `/clients/client-${n}.png`,
+    alt: `Client logo ${idx + 1}`,
+  };
+});
 
 const ClientsSection = () => {
   const { ref, isInView } = useScrollReveal();
 
   return (
-    <section className="py-20 bg-light-grey overflow-hidden">
+    <section className="py-20 bg-white overflow-hidden blueprint-bg">
       <div className="section-container" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -22,23 +24,28 @@ const ClientsSection = () => {
           <span className="text-accent text-xs font-semibold tracking-widest uppercase">Trusted By</span>
           <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mt-3">Our Clients</h2>
         </motion.div>
-      </div>
 
-      {/* Scrolling logos */}
-      <div className="relative">
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-light-grey to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-light-grey to-transparent z-10" />
-        <div className="flex animate-scroll-logos">
-          {[...clients, ...clients].map((name, i) => (
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6"
+        >
+          {clientLogos.map((logo) => (
             <div
-              key={i}
-              className="flex-shrink-0 mx-8 px-8 py-4 rounded-xl bg-card border border-border/50 text-muted-foreground font-heading font-semibold text-sm hover:text-accent hover:border-accent/30 transition-all duration-300 cursor-default select-none"
+              key={logo.src}
+              className="h-16 sm:h-18 lg:h-20 rounded-xl bg-card border border-border/50 flex items-center justify-center px-4"
               style={{ boxShadow: "var(--shadow-soft)" }}
             >
-              {name}
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                loading="lazy"
+                className="max-h-10 sm:max-h-11 lg:max-h-12 w-auto object-contain opacity-80 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+              />
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
