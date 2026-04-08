@@ -28,7 +28,7 @@ const Footer = () => {
               { label: "Services", href: "/#services" },
               { label: "About Us", href: "/about" },
               { label: "Projects", href: "/projects" },
-              { label: "Contact", href: "/#contact" },
+              { label: "Contact", href: "/contact" },
             ].map(({ label, href }) => (
               <a key={label} href={href}
                 className="text-muted-foreground text-sm hover:text-accent transition-colors duration-200 w-fit">
@@ -58,7 +58,11 @@ const Footer = () => {
 
         <div className="border-t border-border mt-10 pt-6 text-center">
           <p className="text-muted-foreground text-xs">
-            © {new Date().getFullYear()} GAJ Manufacturing Works. All rights reserved.
+            © {new Date().getFullYear()} GAJ Manufacturing Works. All rights reserved. | Developed and designed by{" "}
+            <a href="https://devphant.com" target="_blank" rel="noreferrer"
+              className="font-semibold text-accent hover:underline">
+              Devphant
+            </a>
           </p>
         </div>
       </div>

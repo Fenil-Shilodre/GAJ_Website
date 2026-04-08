@@ -1,5 +1,7 @@
-import { motion } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 const projects = [
   { img: "/projects/project-01.png", title: "Shell & Tube Assembly", cat: "Heat Exchanger" },
@@ -12,6 +14,23 @@ const projects = [
 
 const ProductsSection = () => {
   const { ref, isInView } = useScrollReveal();
+  const [lightbox, setLightbox] = useState<number | null>(null);
+
+  const close = useCallback(() => setLightbox(null), []);
+  const prev = useCallback(() => setLightbox((i) => (i !== null ? (i - 1 + projects.length) % projects.length : null)), []);
+  const next = useCallback(() => setLightbox((i) => (i !== null ? (i + 1) % projects.length : null)), []);
+
+  useEffect(() => {
+    if (lightbox === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+    };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => { window.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+  }, [lightbox, close, prev, next]);
 
   return (
     <section id="projects" className="py-24 lg:py-32 blueprint-bg">
@@ -38,7 +57,8 @@ const ProductsSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="card-industrial group overflow-hidden"
+              className="card-industrial group overflow-hidden cursor-pointer"
+              onClick={() => setLightbox(i)}
             >
               <div className="relative overflow-hidden aspect-square">
                 <img
@@ -49,9 +69,7 @@ const ProductsSection = () => {
                   height={640}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <a href="/projects" className="btn-primary text-xs">View Gallery</a>
-                </div>
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <div className="p-5">
                 <span className="text-accent text-xs font-medium">{p.cat}</span>
@@ -60,13 +78,49 @@ const ProductsSection = () => {
             </motion.div>
           ))}
         </div>
-
-        <div className="mt-12 flex justify-center">
-          <a href="/projects" className="btn-outline">
-            See all projects
-          </a>
-        </div>
       </div>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightbox !== null && (
+          <motion.div
+            key="lightbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4"
+            onClick={close}
+          >
+            <button onClick={close} aria-label="Close image"
+              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors">
+              <X className="w-5 h-5" />
+            </button>
+            <button onClick={(e) => { e.stopPropagation(); prev(); }} aria-label="Previous image"
+              className="absolute left-4 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors">
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <motion.img
+              key={lightbox}
+              src={projects[lightbox].img}
+              alt={projects[lightbox].title}
+              initial={{ scale: 0.92, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.92, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="max-h-[85vh] max-w-[90vw] object-contain rounded-xl shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+            <button onClick={(e) => { e.stopPropagation(); next(); }} aria-label="Next image"
+              className="absolute right-4 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors">
+              <ChevronRight className="w-5 h-5" />
+            </button>
+            <span className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-sm">
+              {lightbox + 1} / {projects.length}
+            </span>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
