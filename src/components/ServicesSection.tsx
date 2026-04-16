@@ -9,7 +9,8 @@ const serviceGroups = [
     title: "Process Equipment Manufacturing",
     iconBg: "bg-blue-100",
     iconColor: "text-blue-600",
-    accent: "border-blue-200",
+    accent: "border-blue-500",
+    cardBg: "bg-blue-50/50",
     items: [
       "Reactor Vessel",
       "Storage Tank",
@@ -25,7 +26,8 @@ const serviceGroups = [
     title: "Equipment Maintenance",
     iconBg: "bg-teal-100",
     iconColor: "text-teal-700",
-    accent: "border-teal-200",
+    accent: "border-teal-500",
+    cardBg: "bg-teal-50/50",
     items: [
       "Reactor / Vessel Jacket Replacement",
       "Lantern Assembly Replacement",
@@ -64,7 +66,7 @@ const ServicesSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.15 }}
-              className={`card-industrial p-8 lg:p-10 border-t-4 ${group.accent}`}
+              className={`card-industrial p-8 lg:p-10 border-t-4 ${group.accent} ${group.cardBg}`}
             >
               {/* Header */}
               <div className="flex items-center gap-4 mb-8">

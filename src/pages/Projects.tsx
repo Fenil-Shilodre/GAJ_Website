@@ -42,7 +42,7 @@ export default function Projects() {
             <span className="text-accent text-xs font-semibold tracking-widest uppercase">Shop Floor</span>
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">Our Machineries</h2>
             <p className="text-muted-foreground mt-3 max-w-2xl whitespace-nowrap overflow-hidden text-ellipsis">
-              State-of-the-art equipment that powers our manufacturing capability. Click on any product to learn more.
+              State-of-the-art equipment that powers our manufacturing capability.
             </p>
           </div>
 

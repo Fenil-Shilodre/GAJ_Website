@@ -83,13 +83,13 @@ const AboutSection = () => {
               GAJ Manufacturing Works
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              <strong className="text-foreground">Since 1980, GAJ Manufacturing Works</strong> has been at the forefront of Chemical, Dyes, and Pharmaceutical process equipment manufacturing. We design and manufacture a comprehensive range of industrial equipment compliant with ASME Section VIII Division 1 combining decades of heritage with modern innovation.
+              <strong className="text-foreground">Since 1980, GAJ Manufacturing Works</strong> stands as a symbol of precision engineering and excellence in process equipment manufacturing for the chemical, dyes, and pharmaceutical industries. With over four decades of expertise, we blend legacy craftsmanship with advanced engineering to deliver solutions that meet global standards.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              We specialise in Reactor Vessels, Storage Tanks, Heat Exchangers, Filter Presses, Pressure Vessels, Blenders, and Columns fabricated in Stainless Steel and Mild Steel to customer specifications.
+              Our capabilities include the design, engineering, and fabrication of industrial equipment in compliance with ASME Section VIII Division 1. Our portfolio features reactor vessels, storage tanks, heat exchangers, filter presses, pressure vessels, blenders, and process columns — manufactured using high-grade stainless steel and mild steel to precise client specifications.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-10">
-              GAJ Manufacturing Works is certified to <strong className="text-foreground">ISO 9001:2015</strong> and registered under <strong className="text-foreground">MSME</strong>, reflecting our commitment to quality management, continual improvement, and customer satisfaction.
+              Driven by a commitment to quality, GAJ Manufacturing Works is <strong className="text-foreground">ISO 9001:2015 certified</strong> and <strong className="text-foreground">MSME registered</strong>, focusing on innovation, reliability, and long-term client partnerships.
             </p>
 
             <div className="grid grid-cols-2 gap-6">
