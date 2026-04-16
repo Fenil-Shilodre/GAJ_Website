@@ -7,10 +7,11 @@ const serviceGroups = [
   {
     icon: Factory,
     title: "Process Equipment Manufacturing",
-    iconBg: "bg-blue-100",
-    iconColor: "text-blue-600",
-    accent: "border-blue-500",
-    cardBg: "bg-blue-50/50",
+    iconBg: "bg-[#2E3A63]/10",
+    iconColor: "text-[#2E3A63]",
+    accent: "border-[#2E3A63]",
+    cardBg: "bg-[#2E3A63]/5 ring-2 ring-[#2E3A63]/25",
+    checkColor: "text-[#2E3A63]",
     items: [
       "Reactor Vessel",
       "Storage Tank",
@@ -24,10 +25,11 @@ const serviceGroups = [
   {
     icon: Wrench,
     title: "Equipment Maintenance",
-    iconBg: "bg-teal-100",
-    iconColor: "text-teal-700",
-    accent: "border-teal-500",
-    cardBg: "bg-teal-50/50",
+    iconBg: "bg-[#5FA6B3]/15",
+    iconColor: "text-[#5FA6B3]",
+    accent: "border-[#5FA6B3]",
+    cardBg: "bg-[#5FA6B3]/5 ring-2 ring-[#5FA6B3]/30",
+    checkColor: "text-[#5FA6B3]",
     items: [
       "Reactor / Vessel Jacket Replacement",
       "Lantern Assembly Replacement",
@@ -66,7 +68,8 @@ const ServicesSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.15 }}
-              className={`card-industrial p-8 lg:p-10 border-t-4 ${group.accent} ${group.cardBg}`}
+              className={`card-industrial p-8 lg:p-10 border-t-4 ${group.accent} ${group.cardBg} !-translate-y-1 hover:!translate-y-[-4px]`}
+              style={{ boxShadow: "var(--shadow-card-hover)" }}
             >
               {/* Header */}
               <div className="flex items-center gap-4 mb-8">
@@ -80,7 +83,7 @@ const ServicesSection = () => {
               <ul className="space-y-3">
                 {group.items.map((item) => (
                   <li key={item} className="flex items-center gap-3">
-                    <CheckCircle2 className={`w-4 h-4 flex-shrink-0 ${group.iconColor}`} aria-hidden="true" />
+                    <CheckCircle2 className={`w-4 h-4 flex-shrink-0 ${group.checkColor}`} aria-hidden="true" />
                     <span className="text-foreground text-sm font-medium">{item}</span>
                   </li>
                 ))}
