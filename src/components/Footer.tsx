@@ -57,7 +57,7 @@ const Footer = () => {
                         </div>
                         {/* Director */}
                         <div className="flex flex-col gap-1 pb-3 border-b border-border/40">
-                            <p className="text-xs font-semibold text-accent tracking-wide">Mr. Ankit Lad — Director</p>
+                            <p className="text-xs font-semibold text-accent tracking-wide">Mr. Ankit Lad</p>
                             <a href="tel:+918469474903"
                                className="flex items-center gap-2 text-muted-foreground text-sm hover:text-accent transition-colors">
                                 <Phone className="w-3.5 h-3.5 text-accent flex-shrink-0" aria-hidden="true"/>
