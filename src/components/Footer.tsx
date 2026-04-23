@@ -25,8 +25,8 @@ const Footer = () => {
                         <h4 className="font-heading font-bold text-foreground mb-1">Quick Links</h4>
                         {[
                             {label: "Home", href: "/"},
-                            {label: "Services", href: "/#services"},
                             {label: "About Us", href: "/about"},
+                            {label: "Services", href: "/#services"},
                             {label: "Our Machineries", href: "/projects"},
                             {label: "Contact", href: "/contact"},
                         ].map(({label, href}) => (
