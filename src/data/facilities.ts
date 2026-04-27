@@ -48,7 +48,7 @@ export const facilities: Facility[] = [
       "Used for dish-end forming, flanging, and straightening",
       "Handles Stainless Steel and Mild Steel components",
     ],
-    src: "/facilities/facility-03.png",
+    src: "/facilities/facility-04.png",
   },
   {
     id: "electric-hoist",
@@ -62,7 +62,7 @@ export const facilities: Facility[] = [
       "Improves shop-floor efficiency and safety",
       "Used across all major fabrication operations",
     ],
-    src: "/facilities/facility-04.png",
+    src: "/facilities/facility-03.png",
   },
   {
     id: "profile-cutting-machine",
@@ -90,7 +90,7 @@ export const facilities: Facility[] = [
       "Ensures precise dimensional tolerances",
       "Essential for heat exchanger and vessel component finishing",
     ],
-    src: "/facilities/facility-06.png",
+    src: "/facilities/facility-08.png",
   },
   {
     id: "bench-grinder",
@@ -103,7 +103,7 @@ export const facilities: Facility[] = [
       "Ensures clean weld preparation and post-weld finishing",
       "Improves surface quality of fabricated parts",
     ],
-    src: "/facilities/facility-07.png",
+    src: "/facilities/facility-09.png",
   },
   {
     id: "drill-machine",
@@ -116,7 +116,7 @@ export const facilities: Facility[] = [
       "Ensures accurate hole sizing and positioning",
       "Suitable for a wide range of material thicknesses",
     ],
-    src: "/facilities/facility-08.png",
+    src: "/facilities/facility-02.png",
   },
   {
     id: "tube-expander-machine",
@@ -130,6 +130,6 @@ export const facilities: Facility[] = [
       "Handles various tube diameters and materials",
       "Operated by trained technicians following defined procedures",
     ],
-    src: "/facilities/facility-09.png",
+    src: "/facilities/facility-07.png",
   },
 ];
